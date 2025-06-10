@@ -143,10 +143,28 @@
                 width: 95%;
                 padding: 20px;
                 max-height: 85vh;
+                transform: translate(50%, 0);
+            }
+
+            #letter.show {
+                transform: translate(50%, -50%) rotate(0deg);
             }
             
             #instructions, #scroll-instruction {
                 bottom: 5%;
+                font-size: 18px;
+                padding: 8px 16px;
+            }
+
+            #letter h1 {
+                font-size: 24px;
+                margin-bottom: 15px;
+            }
+
+            #letter p {
+                font-size: 16px;
+                line-height: 1.5;
+                margin-bottom: 10px;
             }
         }
 
