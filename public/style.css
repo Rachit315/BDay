@@ -144,27 +144,46 @@
                 padding: 20px;
                 max-height: 85vh;
                 transform: translate(50%, 0);
+                right: 50%;
+                top: 100vh;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
             }
 
             #letter.show {
-                transform: translate(50%, -50%) rotate(0deg);
+                top: 50%;
+                transform: translate(50%, -50%);
+                right: 50%;
             }
             
             #instructions, #scroll-instruction {
                 bottom: 5%;
                 font-size: 18px;
                 padding: 8px 16px;
+                background-color: rgba(0, 0, 0, 0.3);
             }
 
             #letter h1 {
                 font-size: 24px;
                 margin-bottom: 15px;
+                text-align: center;
             }
 
             #letter p {
                 font-size: 16px;
-                line-height: 1.5;
+                line-height: 1.6;
                 margin-bottom: 10px;
+                text-align: left;
+            }
+
+            /* Improve scrolling on mobile */
+            body {
+                -webkit-overflow-scrolling: touch;
+                overflow-x: hidden;
+            }
+
+            #letter {
+                -webkit-overflow-scrolling: touch;
+                overscroll-behavior: contain;
             }
         }
 

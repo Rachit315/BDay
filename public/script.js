@@ -254,6 +254,16 @@
                     const letter = document.getElementById("letter");
                     letter.classList.add("show");
                     
+                    // Smooth scroll to letter
+                    gsap.to(window, {
+                        scrollTo: {
+                            y: windowHeight * 0.5,
+                            autoKill: false
+                        },
+                        duration: 1,
+                        ease: "power2.inOut"
+                    });
+                    
                     // Hide scroll instruction
                     document.getElementById("scroll-instruction").style.display = "none";
                 }
@@ -328,6 +338,13 @@
 
         // Add scroll event listener
         window.addEventListener("scroll", handleScroll, { passive: true });
+
+        // Add smooth scroll behavior for mobile
+        document.addEventListener('touchmove', function(e) {
+            if (scrollEnabled && !hasScrolled) {
+                e.preventDefault();
+            }
+        }, { passive: false });
 
         // Initialize on window load
         window.onload = function () {
