@@ -226,6 +226,7 @@
 
                 // Enable scrolling
                 scrollEnabled = true;
+                document.body.style.overflow = "auto";
 
                 // Show scroll instruction with delay
                 setTimeout(() => {
@@ -255,13 +256,9 @@
                     letter.classList.add("show");
                     
                     // Smooth scroll to letter
-                    gsap.to(window, {
-                        scrollTo: {
-                            y: windowHeight * 0.5,
-                            autoKill: false
-                        },
-                        duration: 1,
-                        ease: "power2.inOut"
+                    window.scrollTo({
+                        top: windowHeight * 0.5,
+                        behavior: 'smooth'
                     });
                     
                     // Hide scroll instruction
@@ -339,12 +336,20 @@
         // Add scroll event listener
         window.addEventListener("scroll", handleScroll, { passive: true });
 
-        // Add smooth scroll behavior for mobile
-        document.addEventListener('touchmove', function(e) {
-            if (scrollEnabled && !hasScrolled) {
-                e.preventDefault();
-            }
-        }, { passive: false });
+        // Handle touch events for mobile
+        if (isMobile) {
+            document.addEventListener('touchstart', function(e) {
+                if (!scrollEnabled) {
+                    e.preventDefault();
+                }
+            }, { passive: false });
+
+            document.addEventListener('touchmove', function(e) {
+                if (!scrollEnabled) {
+                    e.preventDefault();
+                }
+            }, { passive: false });
+        }
 
         // Initialize on window load
         window.onload = function () {
